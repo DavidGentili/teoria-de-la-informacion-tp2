@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e9f0c976-0a94-4ab1-9a88-86500bf26e07" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/main/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/modelo/Nodeable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/modelo/Palabra.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/modelo/Symbol.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/modelo/Table.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/modelo/codificacion/Codificador.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/modelo/codificacion/Decodificador.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/modelo/fileSystem/ReaderFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/modelo/fileSystem/ReaderTextFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/modelo/fileSystem/WriterFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/modelo/fileSystem/WriterTextFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/modelo/helpers/Binary.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/modelo/helpers/Compress.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/modelo/huffman/HuffmanTree.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/modelo/huffman/Node.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/modelo/shannon/Shannon.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tp2_grupo3.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2Hj2yurhg1U8lI8XWkSbhDPX87K" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/320 i5/Documents/Facultad/Taller de Programacion 1/Practica/Parcial/teoria-de-la-informacion-tp2",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\320 i5\Documents\Facultad\Taller de Programacion 1\Practica\Parcial\teoria-de-la-informacion-tp2" />
+      <recent name="C:\Users\320 i5\Documents\Facultad\Taller de Programacion 1\Practica\Parcial\teoria-de-la-informacion-tp2\src\main\java\modelo\fileSystem" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="modelo.helpers" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="main.Main" />
+      <module name="teoria-de-la-informacion-tp2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e9f0c976-0a94-4ab1-9a88-86500bf26e07" name="Changes" comment="" />
+      <created>1668784434654</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1668784434654</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
