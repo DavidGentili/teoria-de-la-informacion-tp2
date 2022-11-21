@@ -2,6 +2,7 @@ package modelo;
 
 import modelo.fileSystem.ReaderFile;
 import modelo.fileSystem.ReaderTextFile;
+import modelo.fileSystem.WriterTextFile;
 import modelo.huffman.HuffmanTree;
 import modelo.shannon.Shannon;
 
@@ -44,6 +45,24 @@ public class Table {
         for(String word : table.keySet())
             res.put(word, table.get(word).getCode());
         return res;
+    }
+
+    public double getAvlength(){
+        double acum = 0;
+        for(Palabra word : table.values())
+            acum += word.getCode().length() * word.getProbability();
+        return acum;
+    }
+
+    public double getEntrophy(){
+        double acum = 0;
+        for(Palabra word : table.values())
+            acum += word.getProbability() * (- Math.log(word.getProbability())/Math.log(2));
+        return acum;
+    }
+
+    public double getRendimiento(){
+        return getEntrophy() / getAvlength();
     }
 
     public void generateShannonCode(){

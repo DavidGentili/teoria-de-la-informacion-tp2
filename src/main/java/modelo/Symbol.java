@@ -30,6 +30,9 @@ public class Symbol implements Nodeable, Comparable{
     public void appendPrefix(String prefix) {
         code = prefix + code;
     }
+    public void appendSufix(String sufix){
+        code += sufix;
+    }
 
     @Override
     public void resetCode() {

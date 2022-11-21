@@ -34,8 +34,8 @@ public class Shannon <E extends Nodeable> {
                 diff = Math.abs(getSummation(tree) - getSummation(nuevo));
             }while(diff <= prevDiff);
             passFirstElement(nuevo, tree);
-            appendPrefix(nuevo, "0");
-            appendPrefix(tree, "1");
+            appendSufix(nuevo, "0");
+            appendSufix(tree, "1");
             generateShannonCode(nuevo);
             generateShannonCode(tree);
         }
@@ -81,10 +81,10 @@ public class Shannon <E extends Nodeable> {
         return sum;
     }
 
-    private void appendPrefix(TreeSet<E> tree, String prefix){
+    private void appendSufix(TreeSet<E> tree, String sufix){
         Iterator<E> it = tree.iterator();
         while(it.hasNext())
-            it.next().appendPrefix(prefix);
+            it.next().appendSufix(sufix);
     }
 
 

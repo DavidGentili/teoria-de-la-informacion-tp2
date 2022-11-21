@@ -25,98 +25,45 @@ public class Main {
 
         Table table = new Table();
         table.readFile(ORIGINAL_FILE);
+        codinghuffman(table);
+        decodingHuffman();
+        codingShannon(table);
+        decodingShannon();
+    }
 
+    public static void codinghuffman(Table table) throws IOException {
         System.out.println("HUFFMAN");
         table.generateHuffmanCode();
-        Codificador codHuffman = new Codificador(table.getTableCode());
-        codHuffman.codingFile(ORIGINAL_FILE, OUTPUT_HUFFMAN);
+        Codificador cod = new Codificador(table.getTableCode());
+        cod.codingFile(ORIGINAL_FILE, OUTPUT_HUFFMAN);
+        System.out.format("Longitud media: %4.2f Entropia: %4.2f Rendimineto : %4.2f Redundancia : %4.2f\n\n", table.getAvlength(), table.getEntrophy(), table.getRendimiento(), 1 - table.getRendimiento());
+        System.out.println();
+    }
 
-
+    public static void codingShannon(Table table) throws IOException {
         System.out.println("SHANNON");
         table.generateShannonCode();
-        Codificador codShannon = new Codificador(table.getTableCode());
-        codShannon.codingFile(ORIGINAL_FILE, OUTPUT_SHANNON);
+        Codificador cod = new Codificador(table.getTableCode());
+        cod.codingFile(ORIGINAL_FILE, OUTPUT_SHANNON);
+        System.out.format("Longitud media: %4.2f Entropia: %4.2f Rendimineto : %4.2f Redundancia : %4.2f\n\n", table.getAvlength(), table.getEntrophy(), table.getRendimiento(), 1 - table.getRendimiento());
+        System.out.println();
 
+    }
+
+    public static void decodingHuffman() throws IOException {
         System.out.println("RECOVER HUFFMAN");
         Decodificador deco = new Decodificador();
         deco.readFile(OUTPUT_HUFFMAN);
         deco.writeFile(RECOVER_HUFFMAN);
+        System.out.println();
+    }
 
+    public static void decodingShannon() throws IOException {
         System.out.println("RECOVER SHANNON");
+        Decodificador deco = new Decodificador();
         deco.readFile(OUTPUT_SHANNON);
         deco.writeFile(RECOVER_SHANNON);
-
-//        String formatTable = codHuffman.getFormatTable();
-//        String RLC = Compress.RLC(formatTable);
-//        System.out.format("Original: %d RLC: %d",formatTable.length(), RLC.length());
-    }
-
-    public static void exampleHuffman(){
-        ArrayList<Nodeable> list = new ArrayList<>();
-        list.add(new Symbol('a', 0.4));
-        list.add(new Symbol('b', 0.3));
-        list.add(new Symbol('c', 0.1));
-        list.add(new Symbol('d', 0.075));
-        list.add(new Symbol('e', 0.05));
-        list.add(new Symbol('f', 0.05));
-        list.add(new Symbol('g', 0.025));
-
-        HuffmanTree tree = new HuffmanTree();
-        tree.loadTree(list.iterator());
-
-        for (Nodeable node : list) {
-            System.out.println(node);
-        }
-    }
-
-    public static void exampleShannon(){
-        ArrayList<Symbol> list = new ArrayList<>();
-//        list.add(new Symbol('a', 0.4));
-//        list.add(new Symbol('b', 0.3));
-//        list.add(new Symbol('c', 0.1));
-//        list.add(new Symbol('d', 0.075));
-//        list.add(new Symbol('e', 0.05));
-//        list.add(new Symbol('f', 0.05));
-//        list.add(new Symbol('g', 0.025));
-
-//        list.add(new Symbol('a', 0.3));
-//        list.add(new Symbol('b', 0.25));
-//        list.add(new Symbol('c', 0.25));
-//        list.add(new Symbol('d', 0.10));
-//        list.add(new Symbol('e', 0.05));
-//        list.add(new Symbol('f', 0.025));
-//        list.add(new Symbol('g', 0.025));
-
-        list.add(new Symbol('a', 0.38));
-        list.add(new Symbol('b', 0.18));
-        list.add(new Symbol('c', 0.15));
-        list.add(new Symbol('d', 0.15));
-        list.add(new Symbol('e', 0.13));
-
-
-        Shannon<Symbol> shannon = new Shannon<>(list.iterator());
-        shannon.shannonFano();
-
-        for(Symbol sym : list)
-            System.out.println(sym);
-
-    }
-
-    public static void example(){
-        String str = "Holá cariño!";
-        char[] buff = str.toCharArray();
-        for(char c : buff){
-            System.out.format("%c %d %d\n", c, (int) c, (byte) c);
-        }
-        System.out.println(getOffsetWord(str));
-    }
-
-    public static int getOffsetWord(String word){
-        int offset = 0;
-        char[] buff = word.toCharArray();
-        for(char c : buff)
-            offset += ((byte) c < 0) ? 2 : 1;
-        return offset;
+        System.out.println();
     }
 
 

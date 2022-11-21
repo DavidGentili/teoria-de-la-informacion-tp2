@@ -4,8 +4,10 @@ import modelo.fileSystem.ReaderFile;
 import modelo.fileSystem.ReaderTextFile;
 import modelo.fileSystem.WriterTextFile;
 import modelo.helpers.Binary;
+import modelo.helpers.General;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 
 public class Decodificador {
@@ -18,26 +20,50 @@ public class Decodificador {
     }
 
     public void readFile(String fileName) throws IOException{
-        int offset = readTable(fileName);
-        ReaderFile reader = new ReaderFile(fileName, offset + 1 ); //El mas uno es para pasar el salto de linea del final de tabla
+        ReaderFile reader = new ReaderFile(fileName);
+        readTable(reader);
         int length = readLength(reader);
         readContain(reader, length);
+        reader.closeFile();
     }
 
-    private int readTable(String fileName) throws IOException{
-        ReaderTextFile reader = new ReaderTextFile(fileName);
-        String word;
-        String code;
-        char endWord = '|';
-        char endCode = ';';
-        while(!reader.isFinish() && !reader.isJump()){
-            word = reader.readWord(endWord);
-            code = reader.readWord(endCode);
-            if(!word.isBlank() && !word.isEmpty())
-                table.put(code,word);
+    private void readTable(ReaderFile reader) throws IOException {
+        StringBuilder buffer = readBuffer(reader);
+        while (!buffer.isEmpty()){
+            String word = readWord(buffer);
+            int bitslength = (int) General.readByte(buffer);
+            String code = General.readCode(buffer, bitslength);
+            table.put(code, word);
         }
-        reader.closeFile();
-        return reader.getOffset();
+    }
+
+    private StringBuilder readBuffer(ReaderFile reader) throws IOException {
+        int bitsSize = reader.readInteger();
+        int byteSize = Math.floorDiv(bitsSize, 8) + 1;
+        StringBuilder buffer = new StringBuilder();
+        int i = 0;
+        while (i < byteSize && !reader.isFinish()) {
+            buffer.append(Binary.getBinaryByInt(reader.read()));
+            i++;
+        }
+        buffer.delete(bitsSize, buffer.length());
+        return buffer;
+    }
+
+    private String readWord(StringBuilder buffer){
+        byte[] buff = new byte[50];
+        int i = 0;
+        byte separator = (byte) '|';
+        byte current = General.readByte(buffer);
+        while(!buffer.isEmpty() && current != separator){
+            buff[i] = current;
+            i++;
+            current = General.readByte(buffer);
+        }
+        byte[] cleanBuff = new byte[i];
+        for(int j = 0 ; j < cleanBuff.length ; j++)
+            cleanBuff[j] = buff[j];
+        return new String(cleanBuff, StandardCharsets.UTF_8);
     }
 
     private int readLength(ReaderFile reader) throws IOException {
@@ -46,42 +72,43 @@ public class Decodificador {
 
     private void readContain(ReaderFile reader, int length) throws IOException {
         String contain = getContain(reader);
-        reader.closeFile();
         this.message = translateContain(contain, length);
     }
 
     private String getContain(ReaderFile reader) throws IOException {
         String buffer = "";
         while (!reader.isFinish()){
-            buffer += Binary.getbinaryByInt(reader.read());
+            buffer += Binary.getBinaryByInt(reader.read());
         }
         return buffer;
     }
 
     private String translateContain(String contain, int length){
-        String message = "";
+        StringBuilder message = new StringBuilder();
         String chunk = contain.substring(0, length);
         String code = "";
         while(chunk.length() > 0){
+
             code += chunk.charAt(0);
             chunk = chunk.substring(1);
             if(table.containsKey(code)){
-                message += table.get(code);
+                message.append(table.get(code));
                 if(chunk.length() > 0)
-                    message += " ";
+                    message.append(" ");
                 code = "";
             }
         }
-        return message;
+        return message.toString();
     }
 
     public void writeFile(String fileName) throws IOException {
         WriterTextFile writer = new WriterTextFile(fileName);
-        writer.writeString(message);
+        writer.writeString(this.message);
         writer.close();
     }
 
     public String getMessage() {
         return message;
     }
+
 }

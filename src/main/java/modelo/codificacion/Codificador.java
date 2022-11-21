@@ -3,6 +3,7 @@ package modelo.codificacion;
 import modelo.fileSystem.ReaderTextFile;
 import modelo.fileSystem.WriterFile;
 import modelo.fileSystem.WriterTextFile;
+import modelo.helpers.Binary;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -17,16 +18,21 @@ public class Codificador {
     }
 
     public void codingFile(String inputFileName, String outputFileName) throws IOException {
-        //Escribe tabla
-        WriterTextFile outputText = new WriterTextFile(outputFileName);
-        outputText.writeString(getFormatTable());
-        outputText.close();
-        String contain = getContain(inputFileName); //Obtiene contenido
-        int lengthTable = getFormatTable().length();
-        double lengthContent = (double) contain.length() / 8;
-        System.out.format("TABLA\n%-8d bytes\nDIMENSION\n4 bytes\nCONTENIDO\n%-10.2f bytes\nTOTAL\n%-10.2f bytes\n", lengthTable, lengthContent, lengthTable + lengthContent + 4);
-        writeContain(contain, outputFileName); //Escribe dimension y contenido
+        writeTable(outputFileName);
+        String contain = getContain(inputFileName);
+        int lengthTable = Math.floorDiv(getFormatTable().length(), 8) + 4 + 1;
+        int lengthContent = Math.floorDiv(contain.length(), 8) + 4 + 1;
+        System.out.format("TABLA\n%-8d bytes\nCONTENIDO\n%-8d bytes\nTOTAL\n%-8d bytes\n", lengthTable, lengthContent, lengthTable + lengthContent);
+        writeContain(contain, outputFileName);
 
+    }
+
+    private void writeTable(String outputFileName) throws IOException {
+        WriterFile writer = new WriterFile(outputFileName);
+        String formatTable = getFormatTable();
+        writer.writeInteger(formatTable.length());
+        writer.writeCode(formatTable);
+        writer.close();
     }
 
     private String getContain(String fileName) throws IOException {
@@ -50,11 +56,15 @@ public class Codificador {
         output.close();
     }
 
-    public String getFormatTable(){
-        StringBuilder str = new StringBuilder();
-        for(String word : table.keySet())
-            str.append(String.format("%s|%s;", word, table.get(word)));
-        str.append("\n");
-        return str.toString();
+    private String getFormatTable(){
+        StringBuilder buffer = new StringBuilder();
+        char separator = '|';
+        String binarySeparator = Binary.getBinaryByInt((int) separator);
+        for(String word : table.keySet()){
+            String binaryWord = Binary.getBinaryByString(word);
+            String binaryLength = Binary.getBinaryByInt(table.get(word).length());
+            buffer.append(String.format("%s%s%s%s", binaryWord, binarySeparator, binaryLength, table.get(word)));
+        }
+        return buffer.toString();
     }
 }

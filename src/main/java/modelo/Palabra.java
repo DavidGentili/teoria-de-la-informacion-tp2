@@ -52,6 +52,10 @@ public class Palabra implements Comparable, Nodeable{
         code = prefix + code;
     }
 
+    public void appendSufix(String sufix){
+        code += sufix;
+    }
+
     @Override
     public void resetCode() {
         this.code = "";
