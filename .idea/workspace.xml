@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e9f0c976-0a94-4ab1-9a88-86500bf26e07" name="Changes" comment="Commit con el ejecutable" />
+    <list default="true" id="e9f0c976-0a94-4ab1-9a88-86500bf26e07" name="Changes" comment="Se agrego Informe" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -98,7 +98,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669088657812</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Se agrego Informe">
+      <created>1669093030073</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1669093030073</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -117,6 +124,7 @@
     <MESSAGE value="Se adiciono entropia longitud media rendimiento y reduncancia" />
     <MESSAGE value="Se cambio la forma de almacenar la tabla para comprimirla" />
     <MESSAGE value="Commit con el ejecutable" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit con el ejecutable" />
+    <MESSAGE value="Se agrego Informe" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se agrego Informe" />
   </component>
 </project>
