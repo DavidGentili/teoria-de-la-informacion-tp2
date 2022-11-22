@@ -36,7 +36,7 @@ public class Main {
         table.generateHuffmanCode();
         Codificador cod = new Codificador(table.getTableCode());
         cod.codingFile(ORIGINAL_FILE, OUTPUT_HUFFMAN);
-        System.out.format("Longitud media: %4.2f Entropia: %4.2f Rendimineto : %4.2f Redundancia : %4.2f\n\n", table.getAvlength(), table.getEntrophy(), table.getRendimiento(), 1 - table.getRendimiento());
+        System.out.format("Longitud media: %4.2f Entropia: %4.2f Rendimineto : %8.6f Redundancia : %8.6f\n\n", table.getAvlength(), table.getEntrophy(), table.getRendimiento(), 1 - table.getRendimiento());
         System.out.println();
     }
 
@@ -45,7 +45,7 @@ public class Main {
         table.generateShannonCode();
         Codificador cod = new Codificador(table.getTableCode());
         cod.codingFile(ORIGINAL_FILE, OUTPUT_SHANNON);
-        System.out.format("Longitud media: %4.2f Entropia: %4.2f Rendimineto : %4.2f Redundancia : %4.2f\n\n", table.getAvlength(), table.getEntrophy(), table.getRendimiento(), 1 - table.getRendimiento());
+        System.out.format("Longitud media: %4.2f Entropia: %4.2f Rendimineto : %8.6f Redundancia : %8.6f\n\n", table.getAvlength(), table.getEntrophy(), table.getRendimiento(), 1 - table.getRendimiento());
         System.out.println();
 
     }
